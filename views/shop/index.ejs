@@ -1,0 +1,123 @@
+<!--Carousel Wrapper-->
+<div id="video-carousel-example" class="carousel slide carousel-fade" data-ride="carousel"
+    style="margin: 0;padding: 0;">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+        <li data-target="#video-carousel-example" data-slide-to="0" class="active"></li>
+        <li data-target="#video-carousel-example" data-slide-to="1"></li>
+        <li data-target="#video-carousel-example" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <video class="video-fluid" style="width: 100%;" autoplay loop muted>
+                <source src="image/mother kiss.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="video-fluid" style="width: 100%;" autoplay loop muted>
+                <source src="image/forest.mp4" type="video/mp4" />
+            </video>
+        </div>
+        <div class="carousel-item">
+            <video class="video-fluid" style="width: 100%;" autoplay loop muted>
+                <source src="image/dog.mp4" type="video/mp4" />
+            </video>
+        </div>
+    </div>
+    <!--/.Slides-->
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#video-carousel-example" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#video-carousel-example" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+</div>
+<!--Carousel Wrapper-->
+
+<main>
+    <div class="container">
+
+        <div class="container mt-5">
+
+
+            <!--Section: Content-->
+            <section class="dark-grey-text text-center">
+                <% if(books.length > 0) { %>
+                <!-- Section heading -->
+                <h1 class="font-weight-bold mb-4 pb-2">Our Books</h1>
+
+                <!-- Grid row -->
+                <div class="row">
+                    <% books.forEach(book => { %>
+                    <!-- Grid column -->
+                    <div class="col-lg-3 col-md-6 mb-4 align-items-stretch">
+                        <!-- Card -->
+                        <div class="card align-items-center">
+                            <!-- Card image -->
+                            <div class="view overlay">
+                                <img style="height: 200px;" src="<%= book.imageUrl %>" class="card-img-top"
+                                    alt="<%= book.title %>">
+                                <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+                            <!-- Card image -->
+                            <!-- Card content -->
+                            <div class="card-body text-center">
+                                <!-- Category & Title -->
+                                <!-- <a href="" class="grey-text">
+                                    <h6>Shirt</h6>
+                                </a> -->
+                                <h3 class="mb-3">
+                                    <strong>
+                                        <p clss="dark-grey-text">"<%= book.title %>"
+                                        </p>
+                                    </strong>
+                                </h3>
+                                <h5 class="mb-3">
+                                    <strong>
+                                        <p class="dark-grey-text"><%= book.author %>
+                                        </p>
+                                    </strong>
+                                </h5>
+                                <h5 class="mb-3">
+                                    <strong>
+                                        <p class="dark-grey-text"><%= book.publisher %>
+                                        </p>
+                                    </strong>
+                                </h5>
+
+                                <h5 class="font-weight-bold blue-text mb-4">
+                                    <strong>$<%= book.price %></strong>
+                                </h5>
+                                <h5 class="mb-3">
+                                    <p class="dark-grey-text"><%= book.description.substring(0,30) %></p>
+                                </h5>
+                            </div>
+                            <!-- Card content -->
+                        </div>
+                        <!-- Card -->
+                    </div>
+                    <!-- Grid column -->
+                    <% }); %>
+                </div>
+                <!-- Grid row -->
+                <% }else{ %>
+
+                <h1 class="display-4 text-center my-5 text-danger">Nothing Here</h1>
+
+                <% } %>
+            </section>
+            <!--Section: Content-->
+
+
+        </div>
+
+    </div>
+</main>
