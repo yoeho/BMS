@@ -21,6 +21,7 @@ module.exports = class Book {
         this.description = description;
     }
     save() {
+        this.id = Math.random().toString();
         const p = path.join(path.dirname(process.mainModule.filename), 'data', 'book.json');
         fs.readFile(p, (err, fileContent) => {
             let books = [];
@@ -46,5 +47,11 @@ module.exports = class Book {
         //     }
         // });
         getBooksFromFile(cb);
+    }
+    static findById(id, dc) {
+        getBooksFromFile(books => {
+            const book = books.find(b => b.id === id);
+            dc(book);
+        });
     }
 }

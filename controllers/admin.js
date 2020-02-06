@@ -1,7 +1,8 @@
 const Book = require('../models/book');
 exports.getAddBook = (req, res, next) => {
     res.render('admin/add-book.ejs', {
-        pageTitle: 'Add Book'
+        pageTitle: 'Add Book',
+        path: '/admin/add-book'
     });
 }
 
@@ -19,6 +20,7 @@ exports.postAddBook = (req, res, next) => {
 
 exports.getBooks = (req, res, next) => {
     res.render('admin/books.ejs', {
-        pageTitle: 'Book List'
+        pageTitle: 'Book List',
+        path: '/admin/books'
     })
 }

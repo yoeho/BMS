@@ -1,0 +1,38 @@
+<main>
+    <div class="container my-5">
+        <!-- Card -->
+        <div class="card card-cascade wider reverse" style="width: 40rem;">
+
+            <!-- Card image -->
+            <div class="view view-cascade overlay">
+                <img class="card-img-top" style="height: 400px;" src="<%= book.imageUrl %>" alt="<%= book.title %>">
+                <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+
+            <!-- Card content -->
+            <div class="card-body card-body-cascade text-center">
+
+                <!-- Title -->
+                <h3 class="card-title indigo-text"><strong>(Title - <%= book.title %>)</strong></h3>
+                <!-- Subtitle -->
+                <h5 class="font-weight-bold py-2">(Author - <%= book.author %>)</h5>
+                <h5 class="font-weight-bold py-2">(Publisher - <%= book.publisher %>)</h5>
+                <h5 class="font-weight-bold text-danger py-2">(Price - $<%= book.price %>)</h5>
+                <!-- Text -->
+                <p class="card-text" style="text-align: justify;"><%= book.description %></p>
+
+                <!-- Linkedin -->
+                <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+                <!-- Twitter -->
+                <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+                <!-- Dribbble -->
+                <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+
+            </div>
+
+        </div>
+        <!-- Card -->
+    </div>
+</main>
