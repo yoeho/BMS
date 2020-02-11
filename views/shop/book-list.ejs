@@ -38,25 +38,11 @@
                                         </p>
                                     </strong>
                                 </h3>
-                                <h5 class="mb-3">
-                                    <strong>
-                                        <p class="dark-grey-text"><%= book.author %>
-                                        </p>
-                                    </strong>
-                                </h5>
-                                <h5 class="mb-3">
-                                    <strong>
-                                        <p class="dark-grey-text"><%= book.publisher %>
-                                        </p>
-                                    </strong>
-                                </h5>
 
                                 <h5 class="font-weight-bold blue-text mb-4">
                                     <strong>$<%= book.price %></strong>
                                 </h5>
-                                <h5 class="mb-3">
-                                    <p class="dark-grey-text"><%= book.description.substring(0,30)+'.....' %></p>
-                                </h5>
+
                                 <h5>
                                     <a href="/books/<%= book.id %>" class="btn btn-black">Details</a>
                                     <button type="submit" class="btn btn-success">Add to Cart</button>
