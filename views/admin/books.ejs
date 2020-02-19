@@ -1,3 +1,71 @@
 <main>
-    <h1>Book List</h1>
+    <div class="container">
+
+        <div class="container mt-5">
+
+
+            <!--Section: Content-->
+            <section class="dark-grey-text text-center">
+                <% if(books.length > 0) { %>
+                <!-- Section heading -->
+                <h1 class="font-weight-bold mb-4 pb-2">Our Books</h1>
+
+                <!-- Grid row -->
+                <div class="row">
+                    <% books.forEach(book => { %>
+                    <!-- Grid column -->
+                    <div class="col-lg-3 col-md-6 mb-4 align-items-stretch">
+                        <!-- Card -->
+                        <div class="card align-items-center">
+                            <!-- Card image -->
+                            <div class="view overlay">
+                                <img style="height: 200px;" src="<%= book.imageUrl %>" class="card-img-top"
+                                    alt="<%= book.title %>">
+                                <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+                            <!-- Card image -->
+                            <!-- Card content -->
+                            <div class="card-body text-center">
+                                <!-- Category & Title -->
+                                <!-- <a href="" class="grey-text">
+                                    <h6>Shirt</h6>
+                                </a> -->
+                                <h3 class="mb-3">
+                                    <strong>
+                                        <p clss="dark-grey-text">"<%= book.title %>"
+                                        </p>
+                                    </strong>
+                                </h3>
+
+                                <h5 class="font-weight-bold blue-text mb-4">
+                                    <strong>$<%= book.price %></strong>
+                                </h5>
+
+                                <h5>
+                                    <a href="/books/<%= book._id %>" class="btn btn-black">Details</a>
+                                    <button type="submit" class="btn btn-success">Add to Cart</button>
+                                </h5>
+                            </div>
+                            <!-- Card content -->
+                        </div>
+                        <!-- Card -->
+                    </div>
+                    <!-- Grid column -->
+                    <% }); %>
+                </div>
+                <!-- Grid row -->
+                <% }else{ %>
+
+                <h1 class="display-4 text-center my-5 text-danger">Nothing Here</h1>
+
+                <% } %>
+            </section>
+            <!--Section: Content-->
+
+
+        </div>
+
+    </div>
 </main>

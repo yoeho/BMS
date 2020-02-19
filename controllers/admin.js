@@ -14,13 +14,25 @@ exports.postAddBook = (req, res, next) => {
     const price = req.body.price;
     const description = req.body.description;
     const books = new Book(title, imageUrl, author, publisher, price, description);
-    books.save();
-    res.redirect('/admin/books');
+    books.save()
+        .then(result => {
+            console.log(result);
+            res.redirect('/admin/books');
+
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }
 
 exports.getBooks = (req, res, next) => {
-    res.render('admin/books.ejs', {
-        pageTitle: 'Book List',
-        path: '/admin/books'
+    Book.fetchAll().then(books => {
+        res.render('admin/books.ejs', {
+            pageTitle: 'Book List',
+            path: '/admin/books',
+            books: books
+        })
+    }).catch(err => {
+        console.log(err);
     })
 }

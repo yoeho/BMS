@@ -12,9 +12,9 @@ router.get('/books', shopController.getBooks);
 router.get('/books/:bookId', shopController.getBook);
 
 //Cart
-router.get('/cart', shopController.getCart);
+// router.get('/cart', shopController.getCart);
 
 //Orders
-router.get('/orders', shopController.getOrders);
+// router.get('/orders', shopController.getOrders);
 
 module.exports = router;

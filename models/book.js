@@ -1,17 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+const mongodb = require('mongodb');
+const getDb = require('../util/database').getDb;
 
-const getBooksFromFile = (cb) => {
-    const p = path.join(path.dirname(process.mainModule.filename), 'data', 'book.json');
-    fs.readFile(p, (err, fileContent) => {
-        if (err) {
-            cb([]);
-        } else {
-            cb(JSON.parse(fileContent));
-        }
-    });
-}
-module.exports = class Book {
+// const ObjectId = new mongodb.ObjectId();
+
+class Book {
     constructor(title, imageUrl, author, publisher, price, description) {
         this.title = title;
         this.imageUrl = imageUrl;
@@ -21,37 +13,34 @@ module.exports = class Book {
         this.description = description;
     }
     save() {
-        this.id = Math.random().toString();
-        const p = path.join(path.dirname(process.mainModule.filename), 'data', 'book.json');
-        fs.readFile(p, (err, fileContent) => {
-            let books = [];
-            if (!err) {
-                books = JSON.parse(fileContent);
-            }
-            books.push(this);
-            fs.writeFile(p, JSON.stringify(books), (err) => {
-                if (err) {
-                    console.log(err);
-                }
+        const db = getDb();
+        return db.collection('books').insertOne(this)
+            .then(result => {
+                console.log(result);
+            })
+            .catch(err => {
+                console.log(err);
             });
-        });
     }
-    //read
-    static fetchAll(cb) {
-        // const p = path.join(path.dirname(process.mainModule.filename), 'data', 'books.json');
-        // fs.readFile(p, (err, fileContent) => {
-        //     if (err) {
-        //         cb([]);
-        //     } else {
-        //         cb(JSON.parse(fileContent));
-        //     }
-        // });
-        getBooksFromFile(cb);
+    static fetchAll() {
+        const db = getDb();
+        return db.collection('books').find().toArray()
+            .then(books => {
+                return books;
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
-    static findById(id, dc) {
-        getBooksFromFile(books => {
-            const book = books.find(b => b.id === id);
-            dc(book);
-        });
+    static findById(bokId) {
+        const db = getDb();
+        return db.collection('books').find({ _id: new mongodb.ObjectId(bokId) }).next()
+            .then(book => {
+                return book;
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 }
+module.exports = Book;
