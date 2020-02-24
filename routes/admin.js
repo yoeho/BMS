@@ -12,5 +12,10 @@ router.post('/add-book', adminController.postAddBook);
 
 //to show all book with get methos
 router.get('/books', adminController.getBooks);
+router.post('/delete-book', adminController.postDeleteBook);
+
+//edit
+router.get('/edit-book/:bookId', adminController.getEditBook);
+router.post('/edit-book', adminController.postEditBook);
 
 module.exports = router;

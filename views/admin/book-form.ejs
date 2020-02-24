@@ -8,44 +8,53 @@
                     <div class="card">
 
                         <h5 class="card-header secondary-color white-text text-center py-4">
-                            <strong>Add Book</strong>
+                            <strong><% if(editing){ %>Edit Book<% }else{ %>Add Book<% } %></strong>
                         </h5>
 
                         <!--Card content-->
                         <div class="card-body px-lg-5">
 
                             <!-- Form -->
-                            <form class="text-center" style="color: #757575;" action="#!" action="/admin/add-product"
+                            <form class="text-center" style="color: #757575;"
+                                action="<% if(editing){ %>/admin/edit-book<% }else{ %>/admin/add-book<% } %>"
                                 method="POST">
+                                <% if(editing){ %>
+                                <input type="hidden" name="bookId" value="<%= book._id %>">
+                                <% } %>
                                 <!-- Name -->
                                 <div class="md-form md-outline mt-3">
-                                    <input type="text" id="title" name="title" class="form-control">
+                                    <input type="text" id="title" name="title" class="form-control"
+                                        value="<% if(editing){ %> <%= book.title %> <% } %>">
                                     <label for="title">Book Title</label>
                                 </div>
                                 <div class="md-form md-outline mt-3">
-                                    <input type="text" id="imageUrl" name="imageUrl" class="form-control">
+                                    <input type="text" id="imageUrl" name="imageUrl" class="form-control"
+                                        value="<% if(editing){ %> <%= book.imageUrl %> <% } %>">
                                     <label for="imageUrl">ImageUrl</label>
                                 </div>
                                 <div class="md-form md-outline mt-3">
-                                    <input type="text" id="author" name="author" class="form-control">
+                                    <input type="text" id="author" name="author" class="form-control"
+                                        value="<% if(editing){ %> <%= book.author %> <% } %>">
                                     <label for="author">Author</label>
                                 </div>
                                 <div class="md-form md-outline mt-3">
-                                    <input type="text" id="publisher" name="publisher" class="form-control">
+                                    <input type="text" id="publisher" name="publisher" class="form-control"
+                                        value="<% if(editing){ %> <%= book.publisher %> <% } %>">
                                     <label for="publisher">Publisher</label>
                                 </div>
                                 <div class="md-form md-outline mt-3">
-                                    <input type="number" id="price" name="price" class="form-control">
+                                    <input type="text" id="price" name="price" class="form-control"
+                                        value="<% if(editing){ %> <%= book.price %> <% } %>">
                                     <label for="price">Price</label>
                                 </div>
                                 <div class="md-form md-outline mt-3">
                                     <textarea name="description" class="md-textarea form-control" id="description"
-                                        cols="30" rows="5"></textarea>
+                                        cols="30" rows="5"><% if(editing){ %> <%= book.description %> <% } %></textarea>
                                     <label for="description">Description</label>
                                 </div>
                                 <!-- Sign in button -->
                                 <button class="btn btn-secondary btn-rounded btn-block z-depth-0 my-4 waves-effect"
-                                    type="submit">Add</button>
+                                    type="submit"><% if(editing){ %>Edit Book<% }else{ %>Add Book<% } %></button>
 
                             </form>
                             <!-- Form -->

@@ -32,12 +32,6 @@ app.use(shopRoute);
 //Error
 app.use(errConstroller.getErrors);
 
-// app.listen(777, (err) => {
-//     if (!err) {
-//         console.log("Server running at port 777!!");
-//     }
-// });
-
 mongoConnect(() => {
     app.listen(3000);
 });

@@ -43,10 +43,15 @@
                                     <strong>$<%= book.price %></strong>
                                 </h5>
 
-                                <h5>
-                                    <a href="/books/<%= book._id %>" class="btn btn-black">Details</a>
-                                    <button type="submit" class="btn btn-success">Add to Cart</button>
-                                </h5>
+                                <div>
+                                    <a href="/admin/edit-book/<%= book._id %>?edit=true"
+                                        class="btn btn-success btn-rounded btn-sm px-3">Edit</a>
+                                    <form class="float-right" action="/admin/delete-book" method="POST">
+                                        <input type="hidden" name="bookId" value="<%= book._id %>">
+                                        <input type="submit" class="btn btn-danger btn-rounded btn-sm px-3"
+                                            value="Delete">
+                                    </form>
+                                </div>
                             </div>
                             <!-- Card content -->
                         </div>
